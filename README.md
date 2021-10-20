@@ -1,7 +1,7 @@
 ## detikcom
 
 ### Branching
-- master -> production
+- main -> production
 - develop -> development
 - feature/feature-name -> new feature
 - enhancement/case-name -> improved functionality, user interface, or user experience
