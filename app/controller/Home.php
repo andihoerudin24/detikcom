@@ -7,13 +7,49 @@ class Home extends Controller
     public function index()
     {
         $data = $this->model($this->models)->getTransaction();
-        $response=array(
+        $response = array(
             'status' => 1,
-            'message' =>'Success',
+            'message' => 'Success',
             'data' => $data
-         );
+        );
         header('Content-Type: application/json');
         echo json_encode($response);
+    }
 
+    public function addTransaction()
+    {
+        $lastdata=$this->model($this->models)->lastdata();
+        if ($this->model($this->models)->add($_POST) > 0) {
+            $response = array(
+                'status' => 1,
+                'message' => 'Success',
+                'data' =>$lastdata
+                
+            );
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }
+    }
+
+
+    public function GetStatusTransaksi($references_id = null, $merchant_id = null)
+    {
+        if (!empty($references_id) && !empty($merchant_id)) {
+            $data = $this->model($this->models)->getStatusTransaski($references_id, $merchant_id);
+            $response = array(
+                'status' => 1,
+                'message' => 'Success',
+                'data' => $data
+            );
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }else {
+            $response = array(
+                'status' => FALSE,
+                'message' => 'references_id and merchant_id NOT FOUND',
+            );
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }
     }
 }
