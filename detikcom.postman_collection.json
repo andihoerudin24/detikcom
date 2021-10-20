@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "38b2c93e-0a16-4bb0-b724-381000678c9f",
+		"name": "detikcom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE TRANSACTION",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "invoice_id",
+							"value": "32122",
+							"type": "text"
+						},
+						{
+							"key": "item_name",
+							"value": "bolobolo",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "10000",
+							"type": "text"
+						},
+						{
+							"key": "payment_type",
+							"value": "credit_card",
+							"type": "text"
+						},
+						{
+							"key": "merchant_id",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "references_id",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "number_va",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/detikcom/public/Home/addTransaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"detikcom",
+						"public",
+						"Home",
+						"addTransaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET STATUS TRANSAKSI",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/detikcom/public/home/GetStatusTransaksi/23232323/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"detikcom",
+						"public",
+						"home",
+						"GetStatusTransaksi",
+						"23232323",
+						"5"
+					],
+					"query": [
+						{
+							"key": "references_id",
+							"value": "23232323",
+							"disabled": true
+						},
+						{
+							"key": "merchant_id",
+							"value": "5",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE TRANSACTION",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "invoice_id",
+							"value": "32122",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "Paid",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/detikcom/public/Home/updatetransaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"detikcom",
+						"public",
+						"Home",
+						"updatetransaction"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
