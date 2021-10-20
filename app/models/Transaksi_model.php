@@ -40,4 +40,19 @@ class Transaksi_model
         $this->db->query("SELECT tr.references_id,tr.status,tr.number_va FROM $this->tables as tr ORDER BY tr.transaction_id DESC LIMIT 1");
         return $this->db->single();
     }
+
+    public function update($data)
+    {
+        $query = "UPDATE $this->tables SET `status` = '".$data['status']."' WHERE $this->tables.`invoice_id` = '".$data['invoice_id']."' ";
+        $this->db->query($query);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function lastupdate($data)
+    {
+        $query = "SELECT tr.invoice_id, tr.references_id,tr.status,tr.number_va,tr.status FROM $this->tables as tr where tr.invoice_id='".$data['invoice_id']."'";
+        $this->db->query($query);
+        return $this->db->single();
+    }
 }

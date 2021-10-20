@@ -18,12 +18,20 @@ class Home extends Controller
 
     public function addTransaction()
     {
-        $lastdata=$this->model($this->models)->lastdata();
         if ($this->model($this->models)->add($_POST) > 0) {
+            $lastdata=$this->model($this->models)->lastdata();
             $response = array(
                 'status' => 1,
                 'message' => 'Success',
                 'data' =>$lastdata
+                
+            );
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        } else {
+            $response = array(
+                'status' => FALSE,
+                'message' => 'GAGAL INSERT TRANSACTION MASUKAN DATA SEPERTI CONTOH DI POSTMAN  YANG SUDAH DI BUAT'
                 
             );
             header('Content-Type: application/json');
@@ -51,5 +59,28 @@ class Home extends Controller
             header('Content-Type: application/json');
             echo json_encode($response);
         }
+    }
+
+    public function updatetransaction()
+    {
+        if ($this->model($this->models)->update($_POST) > 0) {
+            $lastdata=$this->model($this->models)->lastupdate($_POST);
+            $response = array(
+                'status' => 1,
+                'message' => 'Success',
+                'data' =>$lastdata
+                
+            );
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        } else {
+            $response = array(
+                'status' => FALSE,
+                'message' => 'GAGAL UPDATE TRANSACTION MASUKAN DATA SEPERTI CONTOH DI POSTMAN  YANG SUDAH DI BUAT'
+                
+            );
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }      
     }
 }
